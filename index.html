@@ -1,7 +1,7 @@
 <head>
 <!-- Meta Pixel Code -->
 <script>
-    var __cbSdkHost = "https://capig12.sg-qa-site12.com/";
+    var __cbSdkHost = "https://sgen15lg916-2.sg-qa-site23.com/";
     var __cbSdkSettings={'cbq':{destinations:[{name:"cloudbridge"},],
     "host":__cbSdkHost,"globalVar":"cbq",}};
     !function(a,h,e,v,n,t,s)
@@ -11,9 +11,9 @@
       n.queue=[];t=h.createElement(e);t.async=!0;
       t.src=v;s=h.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
-      "https://capig12.sg-qa-site12.com/"+'sdk/capig-events.js');
-    cbq('init', "4666178406703346226");
-    cbq('loadConfig', "4666178406703346226");
+      "https://sgen15lg916-2.sg-qa-site23.com/"+'sdk/capig-events.js');
+    cbq('init', "6233133704934346596");
+    cbq('loadConfig', "6233133704934346596");
     cbq('track', 'PageView');
     </script>
 <!-- End Meta Pixel Code -->
@@ -30,6 +30,7 @@
         <li><button id="purchaseButton" type="button">Purchase</button></li>
         <li><button id="subcribeButton" type="button">Subscribe</button></li>
         <li><button id="registrationButton" type="button">Registration</button></li>
+        <li><button id="unverifiedEvent_button" type="button">unverifiedEvent</button></li>
     </ul>
     </div>
 
@@ -60,5 +61,10 @@ document.getElementById('subcribeButton').addEventListener('click', function() {
 document.getElementById('registrationButton').addEventListener('click', function() {
   cbq('track', 'CompleteRegistration');
 }, false);
+    document.getElementById('unverifiedEvent_button').addEventListener('click', function()
+{cbq('track', 'unverifiedEvent', {
+    value: 100,currency: 'USD',
+    ssn:'11223333'  }) }, 
+    false);
 </script>
 </body>
