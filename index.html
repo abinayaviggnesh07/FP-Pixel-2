@@ -1,17 +1,35 @@
 <head>
-<!-- Signals Gateway Pixel Code -->
+<!-- Signals Gateway Pixel + Meta Pixel Code -->
     <script>
-    !function(a,h,e,v,n,t,s){
-      if(a.cbq)return;
-      n=a.cbq=function(){n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments);};
-      if(!a._cbq)a._cbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-      t=h.createElement(e);t.async=!0; t.src=v;s=h.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);
-    }(window, document,'script', 'https://d1s83faeolmd54.cloudfront.net/sdk/3641539442611634760/events.js');
-    cbq('setHost', 'https://d1s83faeolmd54.cloudfront.net/');
-    cbq('init', '3641539442611634760');
+      !(function(f,b,e,v,vv,n,nn,t,s,tt,ss){
+        if (!f.cbq){nn = f.cbq = function(){nn.initialized ? nn.apply(f.cbq, arguments) : nn.queue.push(arguments);};
+        if(!f._cbq) f._cbq = nn;
+        nn.push = nn; nn.loaded = !0; nn.version = '2.0'; nn.queue = [];
+        tt = b.createElement(e); tt.async = !0; tt.src = vv; ss=b.getElementsByTagName(e)[0]; ss.parentNode.insertBefore(tt,ss);}
+        if (f.xbq) return; if (f.fbq) f.xbq=f.fbq;
+        n = f.fbq = function()
+       {if((arguments[0]==='track'||arguments[0]==='trackCustom')&&arguments.length<3)arguments=[...arguments,{},{eventID:arguments[1]+"."+Date.now().toString()+Math.random().toString(36)}];
+          else if((arguments[0]==='track'||arguments[0]==='trackCustom')&&arguments.length<4)arguments=[...arguments,{eventID:arguments[1]+"."+Date.now().toString()+Math.random().toString(36)}];
+          else if((arguments[0]==='trackSingle'||arguments[0]==='trackSingleCustom')&&arguments.length<4)arguments=[...arguments,{},{eventID:arguments[2]+"."+Date.now().toString()+Math.random().toString(36)}];
+          else if((arguments[0]==='trackSingle'||arguments[0]==='trackSingleCustom')&&arguments.length<5)arguments=[...arguments,{eventID:arguments[2]+"."+Date.now().toString()+Math.random().toString(36)}];
+        if(arguments[0]==='track'){if(!arguments[3] || !arguments[3].eventID) arguments[3]={...arguments[3],eventID:arguments[1]+"."+Date.now().toString()+"."+Math.random().toString(36)}};
+        if(arguments[0].startsWith('trackSingle')){if(!arguments[4]||!arguments[4].eventID) arguments[4]={...arguments[4],eventID:arguments[2]+"."+Date.now().toString()+"."+Math.random().toString(36)}};
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        if (arguments[0].startsWith('track')) {
+          if(arguments[0].startsWith('trackSingle')) arguments[1]='2992485198679672627';
+          f.cbq.initialized ? f.cbq.apply(f.cbq, arguments) : f.cbq.queue.push(arguments);}
+        }
+       if(!f._fbq) f._fbq = n;
+        n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = (f.xbq)?f.xbq.queue:[];
+        t = b.createElement(e); t.async = !0; t.src = v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+      })
+      (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js', 'https://web.capig-19df7701-e2e-agency.cbinternal.org/sdk/2992485198679672627/events.js');
+      fbq('init', '4233703620206691');fbq('track', 'PageView');
+      cbq('setHost', 'https://capig-19df7701-e2e-agency.cbinternal.org/');
+    cbq('init', '2992485198679672627');
+      cbq('set', 'integrationMethod', 'forkFromSnippetCode');
     </script>
-  <!-- End Signals Gateway Pixel Code -->
+  <!-- End Signals Gateway Pixel + Meta Pixel Code -->
 <meta name="facebook-domain-verification" content="qowwrhpyni79cf2pms3zixyrxoh3b4" />
 <title>pixel test page</title>
 </head>
@@ -30,36 +48,35 @@
     </div>
 
 <script type="text/javascript">
-document.getElementById('addToWishlistButton').addEventListener('click', function() {
-  cbq('track', 'AddToWishlist');
-}, false);
+<p>The following is a Meta button test:</p>
+<button id="addToCartButton">Add to cart</button>
+<button id="addToCartButtonCustom">Add to cart Custom</button>
+<button id="addToCartButtonSingle">Add to cart Single</button>
+<button id="addToCartButtonSingleCustom">Add to cart Single Custom</button>
 
-document.getElementById('addToCartButton').addEventListener('click', function() {
-  cbq('track', 'CustomEvent2');
-}, false);
-
-document.getElementById('checkoutButton').addEventListener('click', function() {
-  cbq('track', 'InitiateCheckout');
-}, false);
-
-document.getElementById('purchaseButton').addEventListener('click', function() {
- cbq('track', 'Purchase', {
-    value: "fsdgdfg",
-    currency: 'USD',
+<script type="text/javascript">
+  $('#addToCartButton').click(function() {
+    fbq('track', 'AddToCart');
+    fbq('track', 'AddToCart', {currency: "USD", value: 20.00});
+    fbq('track', 'AddToCart', {currency: "USD", value: 20.10}, {eventID:"track.0930"});
   });
-}, false);
 
-document.getElementById('subcribeButton').addEventListener('click', function() {
-  cbq('track', 'Subscribe');
-}, false);
+  $('#addToCartButtonCustom').click(function() {
+    fbq('trackCustom', 'AddToCartCustom');
+    fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.00});
+    fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.10}, {eventID:"trackCustom.0930"});
+  });
 
-document.getElementById('registrationButton').addEventListener('click', function() {
-  cbq('track', 'CompleteRegistration');
-}, false);
-    document.getElementById('unverifiedEvent_button').addEventListener('click', function()
-{cbq('track', 'unverifiedEvent', {
-    value: 100,currency: 'USD',
-    ssn:'11223333'  }) }, 
-    false);
+  $('#addToCartButtonSingle').click(function() {
+    fbq('trackSingle', '244953571905383', 'AddToCartSingle');
+    fbq('trackSingle', '244953571905383', 'AddToCartSingle', {currency: "USD", value: 22.00});
+    fbq('trackSingle', '244953571905383', 'AddToCartSingle', {currency: "USD", value: 22.10}, {eventID:"trackSingle.0930"});
+  });
+
+  $('#addToCartButtonSingleCustom').click(function() {
+    fbq('trackSingleCustom', '244953571905383', 'AddToCartSingleCustom');
+    fbq('trackSingleCustom', '244953571905383', 'AddToCartSingleCustom', {currency: "USD", value: 23.00});
+    fbq('trackSingleCustom', '244953571905383', 'AddToCartSingleCustom', {currency: "USD", value: 23.10}, {eventID:"AddToCartSingleCustom.0930"});
+  });
 </script>
 </body>
